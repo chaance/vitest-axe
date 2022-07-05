@@ -1,7 +1,12 @@
-import { configure, run } from "axe-core";
 import type AxeCore from "axe-core";
 import { merge } from "lodash-es";
 import { isHTMLElement, isHTMLString } from "./utils";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+const axeCore: typeof import("axe-core") = require("axe-core");
+const { configure, run } = axeCore;
 
 /**
  * Converts a HTML string or HTML element to a mounted HTML element.
