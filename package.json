@@ -52,6 +52,8 @@
     "LICENSE",
     "README.md",
     "dist",
+    "extend-expect.d.ts",
+    "extend-expect.js",
     "matchers.d.ts",
     "matchers.js"
   ]
