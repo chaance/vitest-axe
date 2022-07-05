@@ -1,1 +1,1 @@
-import "./dist/extend-expect";
+import "./dist/extend-expect.js";

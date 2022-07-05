@@ -1,2 +1,1 @@
-import matchers from "./dist/matchers";
-export default matchers;
+export * from "./dist/matchers.js";
