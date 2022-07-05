@@ -1,12 +1,13 @@
 import chalk from "chalk";
 import type AxeCore from "axe-core";
 import { printReceived, matcherHint } from "./utils";
+import type { MatcherResult } from "./types";
 
 /**
  * A custom matcher that can check aXe results for violations.
  *
- * @param results requires an instance of aXe's results object
- * (https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#results-object)
+ * @param results requires an instance of aXe's
+ * [results object](https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#results-object)
  * @returns Vitest matcher object
  */
 export function toHaveNoViolations(
@@ -94,11 +95,6 @@ function filterViolations(
     return violations.filter((v) => impactLevels.includes(v.impact!));
   }
   return violations;
-}
-
-interface MatcherResult {
-  message(): string;
-  pass: boolean;
 }
 
 export interface NoViolationsMatcherResult extends MatcherResult {
