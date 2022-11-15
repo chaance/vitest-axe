@@ -31,7 +31,7 @@ npm install --save-dev vitest-axe
 # yarn
 yarn add --dev vitest-axe
 # pnpm
-pnpm add --dev vitest-axe
+pnpm add --D vitest-axe
 ```
 
 ## Usage
