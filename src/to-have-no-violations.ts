@@ -11,7 +11,7 @@ import type { MatcherResult } from "./types";
  * @returns Vitest matcher object
  */
 export function toHaveNoViolations(
-  results: AxeCore.AxeResults
+  results: AxeCore.AxeResults,
 ): NoViolationsMatcherResult {
   if (typeof results.violations === "undefined") {
     throw new Error("No violations found in aXe results object");
@@ -21,7 +21,7 @@ export function toHaveNoViolations(
     results.violations,
     // TODO: Check on this error, can't find a reference to impactLevels in
     // axe-core
-    results.toolOptions ? (results as any).toolOptions.impactLevels : []
+    results.toolOptions ? (results as any).toolOptions.impactLevels : [],
   );
 
   function reporter(violations: AxeCore.Result[]) {
@@ -52,7 +52,7 @@ export function toHaveNoViolations(
               lineBreak +
               (violation.helpUrl
                 ? `You can find more information on this issue here: \n${chalk.blue(
-                    violation.helpUrl
+                    violation.helpUrl,
                   )}`
                 : "")
             );
@@ -89,7 +89,7 @@ export function toHaveNoViolations(
  */
 function filterViolations(
   violations: AxeCore.Result[],
-  impactLevels: Array<AxeCore.ImpactValue>
+  impactLevels: Array<AxeCore.ImpactValue>,
 ) {
   if (impactLevels && impactLevels.length > 0) {
     return violations.filter((v) => impactLevels.includes(v.impact!));
