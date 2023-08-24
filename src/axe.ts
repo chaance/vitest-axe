@@ -8,6 +8,8 @@ const require = createRequire(import.meta.url);
 const axeCore: typeof import("axe-core") = require("axe-core");
 const { configure, run } = axeCore;
 
+const AXE_RULES_COLOR = axeCore.getRules(["cat.color"]);
+
 /**
  * Converts a HTML string or HTML element to a mounted HTML element.
  * @param html HTML element or a HTML string
@@ -59,16 +61,17 @@ function configureAxe(
 
 	// Set the global configuration for axe-core
 	// https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#api-name-axeconfigure
-	const { checks = [], ...otherGlobalOptions } = globalOptions;
+	const { rules = [], ...otherGlobalOptions } = globalOptions;
+
+	// Color contrast checking doesnt work in a jsdom environment. So we need to
+	// identify them and disable them by default.
+	const defaultRules = AXE_RULES_COLOR.map(({ ruleId: id }) => ({
+		id,
+		enabled: false,
+	}));
+
 	configure({
-		checks: [
-			{
-				// color contrast checking doesnt work in a jsdom environment.
-				id: "color-contrast",
-				enabled: false,
-			},
-			...checks,
-		],
+		rules: [...defaultRules, ...rules],
 		...otherGlobalOptions,
 	});
 
