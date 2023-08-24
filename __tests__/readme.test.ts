@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { configureAxe, axe } from "../src/index";
+import type Axe from "axe-core";
 
 describe("readme", () => {
 	describe("first readme example", () => {
@@ -82,7 +83,7 @@ describe("readme", () => {
 					},
 				},
 			};
-			const rule = {
+			const rule: Axe.Rule = {
 				id: "demo-rule",
 				selector: ".demo",
 				enabled: false,
@@ -91,6 +92,8 @@ describe("readme", () => {
 				metadata: {
 					description: "Demo check",
 					help: "Demo check",
+					helpUrl: "https://example.com",
+					tags: ["demo-rules"],
 				},
 			};
 
