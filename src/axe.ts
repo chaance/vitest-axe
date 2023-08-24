@@ -50,10 +50,10 @@ function mount(html: Element | string): [HTMLElement, () => void] {
  * @returns Instance of axe
  */
 function configureAxe(
-  options: AxeCore.RunOptions & { globalOptions?: AxeCore.Spec } = {}
+  options: AxeCore.RunOptions & { globalOptions?: AxeCore.Spec } = {},
 ): (
   html: Element | string,
-  additionalOptions?: AxeCore.RunOptions
+  additionalOptions?: AxeCore.RunOptions,
 ) => Promise<AxeCore.AxeResults> {
   let { globalOptions = {}, ...runnerOptions } = options;
 
@@ -82,13 +82,13 @@ function configureAxe(
    */
   return function axe(
     html: Element | string,
-    additionalOptions: AxeCore.RunOptions = {}
+    additionalOptions: AxeCore.RunOptions = {},
   ): Promise<AxeCore.AxeResults> {
     let [element, restore] = mount(html);
     let options: AxeCore.RunOptions = merge(
       {},
       runnerOptions,
-      additionalOptions
+      additionalOptions,
     );
 
     return new Promise<AxeCore.AxeResults>((resolve) => {

@@ -99,7 +99,7 @@ export function matcherHint(
   matcherName: string,
   received = "received",
   expected = "expected",
-  options: MatcherHintOptions = {}
+  options: MatcherHintOptions = {},
 ): string {
   const {
     comment = "",
