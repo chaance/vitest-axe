@@ -14,7 +14,9 @@ export function toHaveNoViolations(
 	results: AxeCore.AxeResults,
 ): NoViolationsMatcherResult {
 	if (typeof results.violations === "undefined") {
-		throw new Error("No violations found in aXe results object");
+		throw new Error(
+			"Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?",
+		);
 	}
 
 	let violations = filterViolations(

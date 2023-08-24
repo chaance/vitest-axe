@@ -115,7 +115,9 @@ describe("toHaveNoViolations", () => {
 		expect(() => {
 			// @ts-expect-error
 			toHaveNoViolations({});
-		}).toThrow("No violations found in aXe results object");
+		}).toThrow(
+			"Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?",
+		);
 	});
 
 	it("returns pass as true when no violations are present", () => {
