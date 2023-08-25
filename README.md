@@ -113,13 +113,10 @@ it("should demonstrate this matcher's usage", async () => {
 <!-- prettier-ignore-start -->
 [vitest]: https://vitest.dev/
 [test setup file]: https://vitest.dev/config/#setupfiles
-[version-badge]:
- https://img.shields.io/npm/v/vitest-axe.svg?style=flat-square
+[version-badge]: https://img.shields.io/npm/v/vitest-axe.svg?style=flat-square
 [package]: https://www.npmjs.com/package/vitest-axe
-[license-badge]:
-  https://img.shields.io/npm/l/vitest-axe.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/vitest-axe.svg?style=flat-square
 [license]: https://github.com/chaance/vitest-axe/blob/main/LICENSE
-[github-watch-badge]:
-  https://img.shields.io/github/watchers/chaance/vitest-axe.svg?style=social
+[github-watch-badge]: https://img.shields.io/github/watchers/chaance/vitest-axe.svg?style=social
 [github-watch]: https://github.com/chaance/vitest-axe/watchers
 <!-- prettier-ignore-end -->
