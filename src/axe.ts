@@ -52,7 +52,10 @@ function mount(html: Element | string): [HTMLElement, () => void] {
  * @returns Instance of axe
  */
 function configureAxe(
-	options: AxeCore.RunOptions & { globalOptions?: AxeCore.Spec } = {},
+	options: AxeCore.RunOptions & {
+		globalOptions?: AxeCore.Spec;
+		impactLevels?: Array<AxeCore.ImpactValue>;
+	} = {},
 ): (
 	html: Element | string,
 	additionalOptions?: AxeCore.RunOptions,
