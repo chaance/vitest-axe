@@ -1,5 +1,3 @@
-import path from "node:path";
-import fsp from "node:fs/promises";
 import { defineConfig } from "tsup";
 
 const entry = ["./src/index.ts", "./src/matchers.ts", "./src/extend-expect.ts"];
