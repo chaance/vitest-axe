@@ -1,6 +1,11 @@
 {
 	"include": ["**/*"],
-	"exclude": ["dist", "node_modules", "./matchers.d.ts"],
+	"exclude": [
+		"dist",
+		"node_modules",
+		"./matchers.d.ts",
+		"./extend-expect.d.ts"
+	],
 	"compilerOptions": {
 		"composite": false,
 		"declaration": true,

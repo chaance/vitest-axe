@@ -1,5 +1,5 @@
 import type AxeCore from "axe-core";
-import merge from "lodash-es/merge";
+import { merge } from "lodash-es";
 import { isHTMLElement, isHTMLString } from "./utils";
 import { createRequire } from "node:module";
 
