@@ -73,7 +73,6 @@ You may also need to include your setup file in your `tsconfig.json` if it isn't
 already matched by your `include` glob:
 
 ```diff
-// In tsconfig.json
 {
 	"include": [
 		"./src/**/*",
