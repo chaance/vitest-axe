@@ -39,59 +39,68 @@ pnpm add -D vitest-axe
 
 ## Setup
 
-Import the matchers from `vitest-axe/matchers` (perferably in your [tests
-setup file][]), then pass them to Vitest's `expect.extend` method:
+### Import `vitest-axe/extend-expect` module
 
-[tests setup file]: https://vitest.dev/config/#setupfiles
+The simplest way to use this library is to import `vitest-axe/extend-expect`
+from your [test setup file][test setup file].
+
+```js
+// vitest-setup.js
+import "vitest-axe/extend-expect";
+```
+
+### Extend in test setup file
+
+You can also import the matchers from `vitest-axe/matchers` then pass them to
+Vitest's `expect.extend` method yourself:
 
 ```js
 // vitest-setup.js
 import * as matchers from "vitest-axe/matchers";
 import { expect } from "vitest";
 expect.extend(matchers);
-
-// vitest.config.js
-export default defineConfig({
-	test: {
-		setupFiles: ["vitest-setup.js"],
-	},
-});
 ```
 
-If you don't want to use axe with every test, you can import the matchers only
-for the tests that need them. See [Usage](#usage) for more details.
-
-### With TypeScript
-
-If you're using TypeScript, make sure your test setup file is in TypeScript. In
-the file, importing from `vitest-axe/extend-expect` will add the matchers to
-Vitest's `expect` types.
-
-```ts
-// vitest-setup.ts
-import "vitest-axe/extend-expect";
-```
-
-You may also need to include your setup file in your `tsconfig.json` if it isn't
-already matched by your `include` glob:
-
-```diff
-{
-	"include": [
-		"./src/**/*",
-+		"./vitest-setup.ts"
-	]
-}
-```
-
-## Usage
+### Extend in individual tests
 
 ```ts
 import { axe, toHaveNoViolations } from "vitest-axe";
 
-// you only need to import the matchers in your test
-// if you didn't extend `expect` in your test setup file
 expect.extend(toHaveNoViolations);
+
+it("should have no axe violations", async () => {
+	const html = "<html><!-- accessible markup! --></html>";
+	expect(await axe(html)).toHaveNoViolations();
+});
+```
+
+### With TypeScript
+
+If you [imported the `vitest/extend-expect` module](#import-vitest-axeextend-expect-module)
+in your setup file, you should be good to go. Make sure your setup file is
+[included in your `tsconfig.json`](https://www.typescriptlang.org/tsconfig#include).
+
+If you do not import the `vitest/extend-expect` module, you will need to augment Vitest's `Assertion` and `AsymmetricMatchersContaining` interfaces.
+
+```ts
+import "vitest";
+import type { AxeMatchers } from "vitest-axe/matchers";
+
+declare module "vitest" {
+	export interface Assertion extends AxeMatchers {}
+	export interface AsymmetricMatchersContaining extends AxeMatchers {}
+}
+```
+
+Further reading:
+
+- [Extending matchers in Vitest](https://vitest.dev/guide/extending-matchers.html)
+- [Module augmentation in TypeScript](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)
+
+## Usage
+
+```ts
+import { axe } from "vitest-axe";
 
 it("should demonstrate this matcher's usage", async () => {
 	const render = () => '<img src="#"/>';
@@ -103,6 +112,7 @@ it("should demonstrate this matcher's usage", async () => {
 
 <!-- prettier-ignore-start -->
 [vitest]: https://vitest.dev/
+[test setup file]: https://vitest.dev/config/#setupfiles
 [version-badge]:
  https://img.shields.io/npm/v/vitest-axe.svg?style=flat-square
 [package]: https://www.npmjs.com/package/vitest-axe
