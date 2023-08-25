@@ -21,6 +21,9 @@ Jest's environment or types.
 
 See the [`README` for the original package](https://github.com/nickcolley/jest-axe/blob/main/README.md) for usage details.
 
+> [!IMPORTANT]
+> There is currently a [bug in `happy-dom`](https://github.com/capricorn86/happy-dom/issues/978) related to its implementation of `Node.prototype.isConnected`. [This causes compatibility issues with Axe,](https://github.com/dequelabs/axe-core/issues/4087) which means that this library will not work if your [Vitest environment](https://vitest.dev/guide/environment.html#test-environment) is set to `happy-dom`.
+
 ## Installation
 
 This module should be installed as one of your project's `devDependencies`:
@@ -49,9 +52,9 @@ expect.extend(matchers);
 
 // vitest.config.js
 export default defineConfig({
-  test: {
-    setupFiles: ["vitest-setup.js"],
-  },
+	test: {
+		setupFiles: ["vitest-setup.js"],
+	},
 });
 ```
 
