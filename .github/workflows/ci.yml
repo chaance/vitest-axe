@@ -61,9 +61,8 @@ jobs:
     name: Test 🧪
     strategy:
       matrix:
-        # os: [ubuntu-latest, macos-latest, windows-latest]
-        os: [ubuntu-latest]
-        # node-version: [16.x, 18.x, 20.x]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [16.x, 18.x, 20.x]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -72,8 +71,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          # node-version: ${{ matrix.node-version }}
-          node-version-file: '.nvmrc'
+          node-version: ${{ matrix.node-version }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
