@@ -22,7 +22,7 @@ Jest's environment or types.
 See the [`README` for the original package](https://github.com/nickcolley/jest-axe/blob/main/README.md) for usage details.
 
 > [!IMPORTANT]
-> There is currently a [bug in `happy-dom`](https://github.com/capricorn86/happy-dom/issues/978) related to its implementation of `Node.prototype.isConnected`. [This causes compatibility issues with Axe,](https://github.com/dequelabs/axe-core/issues/4087) which means that this library will not work if your [Vitest environment](https://vitest.dev/guide/environment.html#test-environment) is set to `happy-dom`.
+> There is currently a [bug in Happy DOM](https://github.com/capricorn86/happy-dom/issues/978) related to its implementation of `Node.prototype.isConnected`. [This causes compatibility issues with axe,](https://github.com/dequelabs/axe-core/issues/4087) which means that this library will not work if your [Vitest environment](https://vitest.dev/guide/environment.html#test-environment) is set to `happy-dom`.
 
 ## Installation
 
@@ -37,14 +37,14 @@ yarn add --dev vitest-axe
 pnpm add -D vitest-axe
 ```
 
-## Usage
+## Setup
 
-Import the matchers from `vitest-axe/matchers` once (perferably in your [tests
+Import the matchers from `vitest-axe/matchers` (perferably in your [tests
 setup file][]), then pass them to Vitest's `expect.extend` method:
 
 [tests setup file]: https://vitest.dev/config/#setupfiles
 
-```javascript
+```js
 // vitest-setup.js
 import * as matchers from "vitest-axe/matchers";
 import { expect } from "vitest";
@@ -58,13 +58,16 @@ export default defineConfig({
 });
 ```
 
+If you don't want to use axe with every test, you can import the matchers only
+for the tests that need them. See [Usage](#usage) for more details.
+
 ### With TypeScript
 
 If you're using TypeScript, make sure your test setup file is in TypeScript. In
 the file, importing from `vitest-axe/extend-expect` will add the matchers to
 Vitest's `expect` types.
 
-```typescript
+```ts
 // vitest-setup.ts
 import "vitest-axe/extend-expect";
 ```
@@ -81,12 +84,29 @@ already matched by your `include` glob:
 }
 ```
 
+## Usage
+
+```ts
+import { axe, toHaveNoViolations } from "vitest-axe";
+
+// you only need to import the matchers in your test
+// if you didn't extend `expect` in your test setup file
+expect.extend(toHaveNoViolations);
+
+it("should demonstrate this matcher's usage", async () => {
+	const render = () => '<img src="#"/>';
+	// pass anything that outputs html to axe
+	const html = render();
+	expect(await axe(html)).toHaveNoViolations();
+});
+```
+
 <!-- prettier-ignore-start -->
 [vitest]: https://vitest.dev/
 [version-badge]:
  https://img.shields.io/npm/v/vitest-axe.svg?style=flat-square
 [package]: https://www.npmjs.com/package/vitest-axe
-[license-badge]: 
+[license-badge]:
   https://img.shields.io/npm/l/vitest-axe.svg?style=flat-square
 [license]: https://github.com/chaance/vitest-axe/blob/main/LICENSE
 [github-watch-badge]:
