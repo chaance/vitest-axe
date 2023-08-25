@@ -1,6 +1,6 @@
 {
 	"name": "vitest-axe",
-	"version": "1.0.0-pre.1",
+	"version": "1.0.0-pre.2",
 	"description": "Custom Vitest matcher for testing accessibility with aXe. Forked from jest-axe.",
 	"repository": {
 		"type": "git",
