@@ -21,9 +21,11 @@ export function toHaveNoViolations(
 
 	let violations = filterViolations(
 		results.violations,
-		// TODO: Check on this error, can't find a reference to impactLevels in
-		// axe-core
-		results.toolOptions ? (results as any).toolOptions.impactLevels : [],
+		// `impactLevels` is not a valid toolOption but one we add to the config
+		// when calling `run`. axe just happens to pass this along. Might be a safer
+		// way to do this since it's not documented API.
+		// @ts-expect-error
+		results.toolOptions?.impactLevels ?? [],
 	);
 
 	function reporter(violations: AxeCore.Result[]) {
