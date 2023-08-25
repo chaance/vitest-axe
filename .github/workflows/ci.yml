@@ -1,4 +1,4 @@
-name: ci
+name: CI
 
 on:
   push:
@@ -13,7 +13,30 @@ concurrency:
 
 jobs:
 
+  build:
+    name: Build 🛠️
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: |
+            - args: [--frozen-lockfile]
+
+      - name: Build
+        run: pnpm build
+
   lint:
+    name: Lint 🔎
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,7 +56,9 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
   test:
+    name: Test 🧪
     strategy:
       matrix:
         # os: [ubuntu-latest, macos-latest, windows-latest]
