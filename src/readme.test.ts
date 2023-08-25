@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { configureAxe, axe } from "../src/index";
 import type Axe from "axe-core";
 
+// See https://github.com/nickcolley/jest-axe#readme
 describe("readme", () => {
 	describe("first readme example", () => {
 		it("should demonstrate this matcher`s usage", async () => {
@@ -125,7 +126,6 @@ describe("readme", () => {
 	describe("custom configuration for user impact", () => {
 		const axe = configureAxe({
 			// How serious the violation is. Can be one of "minor", "moderate", "serious", or "critical".
-			// @ts-ignore
 			impactLevels: ["critical"],
 		});
 
