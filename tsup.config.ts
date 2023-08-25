@@ -13,14 +13,5 @@ export default defineConfig([
 			entry: entry.filter((e) => !e.includes("extend-expect")),
 		},
 		outDir: "dist",
-		async onSuccess() {
-			console.log("SUCCESS");
-			await Promise.all([
-				fsp.copyFile(
-					path.join(__dirname, "src/extend-expect.d.ts"),
-					path.join(__dirname, "extend-expect.d.ts"),
-				),
-			]);
-		},
 	},
 ]);
