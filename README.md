@@ -60,24 +60,26 @@ export default defineConfig({
 
 ### With TypeScript
 
-If you're using TypeScript, make sure your setup file is a `.ts` and not a `.js`
-to include the necessary types. Importing from `vitest-axe/extend-expect` will
-add the matchers to Vitest's `expect` types.
+If you're using TypeScript, make sure your test setup file is in TypeScript. In
+the file, importing from `vitest-axe/extend-expect` will add the matchers to
+Vitest's `expect` types.
 
 ```typescript
 // vitest-setup.ts
 import "vitest-axe/extend-expect";
 ```
 
-You will also need to include your setup file in your `tsconfig.json` if you
-haven't already:
+You may also need to include your setup file in your `tsconfig.json` if it isn't
+already matched by your `include` glob:
 
-```json5
-  // In tsconfig.json
-  "include": [
-    // ...
-    "./vitest-setup.ts"
-  ],
+```diff
+// In tsconfig.json
+{
+	"include": [
+		"./src/**/*",
++		"./vitest-setup.ts"
+	]
+}
 ```
 
 <!-- prettier-ignore-start -->
