@@ -7,9 +7,7 @@ export default defineConfig([
 		entry,
 		format: "esm",
 		sourcemap: true,
-		dts: {
-			entry: entry.filter((e) => !e.includes("extend-expect")),
-		},
+		dts: true,
 		outDir: "dist",
 	},
 ]);

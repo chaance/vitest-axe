@@ -1,1 +1,3 @@
-export type * from "./dist/matchers";
+import * as matchers from "./dist/matchers";
+
+export = matchers;
