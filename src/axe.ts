@@ -1,14 +1,14 @@
-import type AxeCore from "axe-core";
-import { merge } from "lodash-es";
-import { isHTMLElement, isHTMLString } from "./utils";
-import { createRequire } from "node:module";
+import type AxeCore from "axe-core"
+import { merge } from "lodash-es"
+import { isHTMLElement, isHTMLString } from "./utils"
+import { createRequire } from "node:module"
 
-const require = createRequire(import.meta.url);
+const require = createRequire(import.meta.url)
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-const axeCore: typeof import("axe-core") = require("axe-core");
-const { configure, run } = axeCore;
+const axeCore: typeof import("axe-core") = require("axe-core")
+const { configure, run } = axeCore
 
-const AXE_RULES_COLOR = axeCore.getRules(["cat.color"]);
+const AXE_RULES_COLOR = axeCore.getRules(["cat.color"])
 
 /**
  * Converts a HTML string or HTML element to a mounted HTML element.
@@ -18,26 +18,26 @@ const AXE_RULES_COLOR = axeCore.getRules(["cat.color"]);
 function mount(html: Element | string): [HTMLElement, () => void] {
 	if (isHTMLElement(html)) {
 		if (document.body.contains(html)) {
-			return [html, () => undefined];
+			return [html, () => undefined]
 		}
-		html = html.outerHTML;
+		html = html.outerHTML
 	}
 
 	if (isHTMLString(html)) {
-		let originalHTML = document.body.innerHTML;
+		let originalHTML = document.body.innerHTML
 		function restore() {
-			document.body.innerHTML = originalHTML;
+			document.body.innerHTML = originalHTML
 		}
 
-		document.body.innerHTML = html;
-		return [document.body, restore];
+		document.body.innerHTML = html
+		return [document.body, restore]
 	}
 
 	if (typeof html === "string") {
-		throw new Error(`html parameter ("${html}") has no elements`);
+		throw new Error(`html parameter ("${html}") has no elements`)
 	}
 
-	throw new Error(`html parameter should be an HTML string or an HTML element`);
+	throw new Error(`html parameter should be an HTML string or an HTML element`)
 }
 
 /**
@@ -53,30 +53,30 @@ function mount(html: Element | string): [HTMLElement, () => void] {
  */
 function configureAxe(
 	options: AxeCore.RunOptions & {
-		globalOptions?: AxeCore.Spec;
-		impactLevels?: Array<AxeCore.ImpactValue>;
+		globalOptions?: AxeCore.Spec
+		impactLevels?: Array<AxeCore.ImpactValue>
 	} = {},
 ): (
 	html: Element | string,
 	additionalOptions?: AxeCore.RunOptions,
 ) => Promise<AxeCore.AxeResults> {
-	let { globalOptions = {}, ...runnerOptions } = options;
+	let { globalOptions = {}, ...runnerOptions } = options
 
 	// Set the global configuration for axe-core
 	// https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#api-name-axeconfigure
-	const { rules = [], ...otherGlobalOptions } = globalOptions;
+	const { rules = [], ...otherGlobalOptions } = globalOptions
 
 	// Color contrast checking doesnt work in a jsdom environment. So we need to
 	// identify them and disable them by default.
 	const defaultRules = AXE_RULES_COLOR.map(({ ruleId: id }) => ({
 		id,
 		enabled: false,
-	}));
+	}))
 
 	configure({
 		rules: [...defaultRules, ...rules],
 		...otherGlobalOptions,
-	});
+	})
 
 	/**
 	 * Small wrapper for axe-core#run that enables promises, default options and
@@ -90,23 +90,23 @@ function configureAxe(
 		html: Element | string,
 		additionalOptions: AxeCore.RunOptions = {},
 	): Promise<AxeCore.AxeResults> {
-		let [element, restore] = mount(html);
+		let [element, restore] = mount(html)
 		let options: AxeCore.RunOptions = merge(
 			{},
 			runnerOptions,
 			additionalOptions,
-		);
+		)
 
 		return new Promise<AxeCore.AxeResults>((resolve) => {
 			run(element, options, (err, results) => {
-				restore();
-				if (err) throw err;
-				resolve(results);
-			});
-		});
-	};
+				restore()
+				if (err) throw err
+				resolve(results)
+			})
+		})
+	}
 }
 
-const axe = configureAxe();
-export { configureAxe, axe };
-export type { AxeCore };
+const axe = configureAxe()
+export { configureAxe, axe }
+export type { AxeCore }

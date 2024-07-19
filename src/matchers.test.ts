@@ -1,7 +1,7 @@
-import { describe, expect, it } from "vitest";
-import { toHaveNoViolations } from "../src/matchers";
-import { axe } from "../src/index";
-import type { AxeCore } from "../src/index";
+import { describe, expect, it } from "vitest"
+import { toHaveNoViolations } from "../src/matchers"
+import { axe } from "../src/index"
+import type { AxeCore } from "../src/index"
 
 const PASSING_AXE_RESULTS: AxeCore.AxeResults = {
 	testEngine: {
@@ -23,7 +23,7 @@ const PASSING_AXE_RESULTS: AxeCore.AxeResults = {
 	violations: [],
 	incomplete: [],
 	inapplicable: [],
-};
+}
 const FAILING_AXE_RESULTS: AxeCore.AxeResults = {
 	...PASSING_AXE_RESULTS,
 	violations: [
@@ -103,43 +103,43 @@ const FAILING_AXE_RESULTS: AxeCore.AxeResults = {
 			],
 		},
 	],
-};
+}
 
 describe("toHaveNoViolations", () => {
 	it("returns a matcher function", () => {
-		expect(toHaveNoViolations).toBeDefined();
-		expect(typeof toHaveNoViolations).toBe("function");
-	});
+		expect(toHaveNoViolations).toBeDefined()
+		expect(typeof toHaveNoViolations).toBe("function")
+	})
 
 	it("throws error if non axe results object is passed", () => {
 		expect(() => {
 			// @ts-expect-error
-			toHaveNoViolations({});
+			toHaveNoViolations({})
 		}).toThrow(
 			"Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?",
-		);
-	});
+		)
+	})
 
 	it("returns pass as true when no violations are present", () => {
-		const matcherOutput = toHaveNoViolations(PASSING_AXE_RESULTS);
-		expect(matcherOutput.pass).toBe(true);
-	});
+		const matcherOutput = toHaveNoViolations(PASSING_AXE_RESULTS)
+		expect(matcherOutput.pass).toBe(true)
+	})
 
 	it("returns same violations that are passed in the results object", () => {
-		const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS);
-		expect(matcherOutput.actual).toBe(FAILING_AXE_RESULTS.violations);
-	});
+		const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
+		expect(matcherOutput.actual).toBe(FAILING_AXE_RESULTS.violations)
+	})
 
 	it("returns correctly formatted message when violations are present", () => {
-		const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS);
-		expect(typeof matcherOutput.message).toBe("function");
-		expect(matcherOutput.message()).toMatchSnapshot();
-	});
+		const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
+		expect(typeof matcherOutput.message).toBe("function")
+		expect(matcherOutput.message()).toMatchSnapshot()
+	})
 
 	it("returns pass as false when violations are present", () => {
-		const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS);
-		expect(matcherOutput.pass).toBe(false);
-	});
+		const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
+		expect(matcherOutput.pass).toBe(false)
+	})
 
 	it("returns properly formatted text with more complex example", async () => {
 		const complexHtmlExample = `
@@ -152,9 +152,9 @@ describe("toHaveNoViolations", () => {
             <input type="text"/>
           </body>
         </html>
-      `;
-		const results = await axe(complexHtmlExample);
-		const matcherOutput = toHaveNoViolations(results);
-		expect(matcherOutput.message()).toMatchSnapshot();
-	});
-});
+      `
+		const results = await axe(complexHtmlExample)
+		const matcherOutput = toHaveNoViolations(results)
+		expect(matcherOutput.message()).toMatchSnapshot()
+	})
+})

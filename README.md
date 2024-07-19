@@ -46,7 +46,7 @@ from your [test setup file][test setup file].
 
 ```js
 // vitest-setup.js
-import "vitest-axe/extend-expect";
+import "vitest-axe/extend-expect"
 ```
 
 ### Extend in test setup file
@@ -56,22 +56,22 @@ Vitest's `expect.extend` method yourself:
 
 ```js
 // vitest-setup.js
-import * as matchers from "vitest-axe/matchers";
-import { expect } from "vitest";
-expect.extend(matchers);
+import * as matchers from "vitest-axe/matchers"
+import { expect } from "vitest"
+expect.extend(matchers)
 ```
 
 ### Extend in individual tests
 
 ```ts
-import { axe, toHaveNoViolations } from "vitest-axe";
+import { axe, toHaveNoViolations } from "vitest-axe"
 
-expect.extend(toHaveNoViolations);
+expect.extend(toHaveNoViolations)
 
 it("should have no axe violations", async () => {
-	const html = "<html><!-- accessible markup! --></html>";
-	expect(await axe(html)).toHaveNoViolations();
-});
+	const html = "<html><!-- accessible markup! --></html>"
+	expect(await axe(html)).toHaveNoViolations()
+})
 ```
 
 ### With TypeScript
@@ -83,8 +83,8 @@ in your setup file, you should be good to go. Make sure your setup file is
 If you do not import the `vitest/extend-expect` module, you will need to augment Vitest's `Assertion` and `AsymmetricMatchersContaining` interfaces.
 
 ```ts
-import "vitest";
-import type { AxeMatchers } from "vitest-axe/matchers";
+import "vitest"
+import type { AxeMatchers } from "vitest-axe/matchers"
 
 declare module "vitest" {
 	export interface Assertion extends AxeMatchers {}
@@ -100,14 +100,14 @@ Further reading:
 ## Usage
 
 ```ts
-import { axe } from "vitest-axe";
+import { axe } from "vitest-axe"
 
 it("should demonstrate this matcher's usage", async () => {
-	const render = () => '<img src="#"/>';
+	const render = () => '<img src="#"/>'
 	// pass anything that outputs html to axe
-	const html = render();
-	expect(await axe(html)).toHaveNoViolations();
-});
+	const html = render()
+	expect(await axe(html)).toHaveNoViolations()
+})
 ```
 
 <!-- prettier-ignore-start -->

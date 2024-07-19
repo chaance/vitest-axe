@@ -1,4 +1,4 @@
 export interface MatcherResult {
-	message(): string;
-	pass: boolean;
+	message(): string
+	pass: boolean
 }
