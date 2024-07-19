@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk from "chalk";
+import chalk from "chalk"
 import {
 	format as prettyFormat,
 	plugins as prettyFormatPlugins,
-} from "pretty-format";
+} from "pretty-format"
 
 const {
 	AsymmetricMatcher,
@@ -18,7 +18,7 @@ const {
 	Immutable,
 	ReactElement,
 	ReactTestComponent,
-} = prettyFormatPlugins;
+} = prettyFormatPlugins
 
 const PLUGINS = [
 	ReactTestComponent,
@@ -27,30 +27,30 @@ const PLUGINS = [
 	DOMCollection,
 	Immutable,
 	AsymmetricMatcher,
-];
+]
 
-type MatcherHintColor = (arg: string) => string; // subset of Chalk type
+type MatcherHintColor = (arg: string) => string // subset of Chalk type
 
-const DIM_COLOR = chalk.dim;
+const DIM_COLOR = chalk.dim
 
 export type MatcherHintOptions = {
-	comment?: string;
-	expectedColor?: MatcherHintColor;
-	isDirectExpectCall?: boolean;
-	isNot?: boolean;
-	promise?: string;
-	receivedColor?: MatcherHintColor;
-	secondArgument?: string;
-	secondArgumentColor?: MatcherHintColor;
-};
+	comment?: string
+	expectedColor?: MatcherHintColor
+	isDirectExpectCall?: boolean
+	isNot?: boolean
+	promise?: string
+	receivedColor?: MatcherHintColor
+	secondArgument?: string
+	secondArgumentColor?: MatcherHintColor
+}
 
-const EXPECTED_COLOR = chalk.green;
-const RECEIVED_COLOR = chalk.red;
-const SPACE_SYMBOL = "\u{00B7}"; // middle dot
+const EXPECTED_COLOR = chalk.green
+const RECEIVED_COLOR = chalk.red
+const SPACE_SYMBOL = "\u{00B7}" // middle dot
 
 function stringify(object: unknown, maxDepth = 10, maxWidth = 10): string {
-	let MAX_LENGTH = 10000;
-	let result;
+	let MAX_LENGTH = 10000
+	let result
 
 	try {
 		result = prettyFormat(object, {
@@ -58,7 +58,7 @@ function stringify(object: unknown, maxDepth = 10, maxWidth = 10): string {
 			maxWidth,
 			min: true,
 			plugins: PLUGINS,
-		});
+		})
 	} catch {
 		result = prettyFormat(object, {
 			callToJSON: false,
@@ -66,30 +66,30 @@ function stringify(object: unknown, maxDepth = 10, maxWidth = 10): string {
 			maxWidth,
 			min: true,
 			plugins: PLUGINS,
-		});
+		})
 	}
 
 	if (result.length >= MAX_LENGTH && maxDepth > 1) {
-		return stringify(object, Math.floor(maxDepth / 2), maxWidth);
+		return stringify(object, Math.floor(maxDepth / 2), maxWidth)
 	}
 	if (result.length >= MAX_LENGTH && maxWidth > 1) {
-		return stringify(object, maxDepth, Math.floor(maxWidth / 2));
+		return stringify(object, maxDepth, Math.floor(maxWidth / 2))
 	}
-	return result;
+	return result
 }
 
 // Instead of inverse highlight which now implies a change,
 // replace common spaces with middle dot at the end of any line.
 function replaceTrailingSpaces(text: string): string {
-	return text.replace(/\s+$/gm, (spaces) => SPACE_SYMBOL.repeat(spaces.length));
+	return text.replace(/\s+$/gm, (spaces) => SPACE_SYMBOL.repeat(spaces.length))
 }
 
 export function printReceived(object: unknown): string {
-	return RECEIVED_COLOR(replaceTrailingSpaces(stringify(object)));
+	return RECEIVED_COLOR(replaceTrailingSpaces(stringify(object)))
 }
 
 export function printExpected(value: unknown): string {
-	return EXPECTED_COLOR(replaceTrailingSpaces(stringify(value)));
+	return EXPECTED_COLOR(replaceTrailingSpaces(stringify(value)))
 }
 
 // Display assertion for the report when a test fails.
@@ -110,54 +110,54 @@ export function matcherHint(
 		receivedColor = RECEIVED_COLOR,
 		secondArgument = "",
 		secondArgumentColor = EXPECTED_COLOR,
-	} = options;
-	let hint = "";
-	let dimString = "expect"; // concatenate adjacent dim substrings
+	} = options
+	let hint = ""
+	let dimString = "expect" // concatenate adjacent dim substrings
 
 	if (!isDirectExpectCall && received !== "") {
-		hint += DIM_COLOR(`${dimString}(`) + receivedColor(received);
-		dimString = ")";
+		hint += DIM_COLOR(`${dimString}(`) + receivedColor(received)
+		dimString = ")"
 	}
 
 	if (promise !== "") {
-		hint += DIM_COLOR(`${dimString}.`) + promise;
-		dimString = "";
+		hint += DIM_COLOR(`${dimString}.`) + promise
+		dimString = ""
 	}
 
 	if (isNot) {
-		hint += `${DIM_COLOR(`${dimString}.`)}not`;
-		dimString = "";
+		hint += `${DIM_COLOR(`${dimString}.`)}not`
+		dimString = ""
 	}
 
 	if (matcherName.includes(".")) {
 		// Old format: for backward compatibility,
 		// especially without promise or isNot options
-		dimString += matcherName;
+		dimString += matcherName
 	} else {
 		// New format: omit period from matcherName arg
-		hint += DIM_COLOR(`${dimString}.`) + matcherName;
-		dimString = "";
+		hint += DIM_COLOR(`${dimString}.`) + matcherName
+		dimString = ""
 	}
 
 	if (expected === "") {
-		dimString += "()";
+		dimString += "()"
 	} else {
-		hint += DIM_COLOR(`${dimString}(`) + expectedColor(expected);
+		hint += DIM_COLOR(`${dimString}(`) + expectedColor(expected)
 		if (secondArgument) {
-			hint += DIM_COLOR(", ") + secondArgumentColor(secondArgument);
+			hint += DIM_COLOR(", ") + secondArgumentColor(secondArgument)
 		}
-		dimString = ")";
+		dimString = ")"
 	}
 
 	if (comment !== "") {
-		dimString += ` // ${comment}`;
+		dimString += ` // ${comment}`
 	}
 
 	if (dimString !== "") {
-		hint += DIM_COLOR(dimString);
+		hint += DIM_COLOR(dimString)
 	}
 
-	return hint;
+	return hint
 }
 
 /**
@@ -165,7 +165,7 @@ export function matcherHint(
  * @param html a HTML element or a HTML string
  */
 export function isHTMLString(html: any): html is string {
-	return typeof html === "string" && /(<([^>]+)>)/i.test(html);
+	return typeof html === "string" && /(<([^>]+)>)/i.test(html)
 }
 
 /**
@@ -173,5 +173,5 @@ export function isHTMLString(html: any): html is string {
  * @param html a HTML element or a HTML string
  */
 export function isHTMLElement(html: any): html is HTMLElement {
-	return !!html && typeof html === "object" && typeof html.tagName === "string";
+	return !!html && typeof html === "object" && typeof html.tagName === "string"
 }

@@ -1,7 +1,7 @@
-import { expect, vi } from "vitest";
-import { plugins } from "pretty-format";
-import "../src/extend-expect";
+import { expect, vi } from "vitest"
+import { plugins } from "pretty-format"
+import "../src/extend-expect"
 
-expect.addSnapshotSerializer(plugins.ConvertAnsi as any);
+expect.addSnapshotSerializer(plugins.ConvertAnsi as any)
 
-HTMLCanvasElement.prototype.getContext = vi.fn(() => null);
+HTMLCanvasElement.prototype.getContext = vi.fn(() => null)
