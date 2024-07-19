@@ -1,27 +1,27 @@
 {
-	"include": ["**/*"],
-	"exclude": [
-		"dist",
-		"node_modules",
-		"./matchers.d.ts",
-		"./extend-expect.d.ts"
-	],
-	"compilerOptions": {
-		"composite": false,
-		"declaration": true,
-		"declarationMap": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"inlineSources": false,
-		"isolatedModules": true,
-		"moduleResolution": "node",
-		"noEmit": true,
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"preserveWatchOutput": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"module": "ESNext",
-		"target": "ES2020"
-	}
+  "include": ["**/*"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "./matchers.d.ts",
+    "./extend-expect.d.ts"
+  ],
+  "compilerOptions": {
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "module": "ESNext",
+    "target": "ES2020"
+  }
 }
