@@ -1,6 +1,6 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsup"
 
-const entry = ["./src/index.ts", "./src/matchers.ts", "./src/extend-expect.ts"];
+const entry = ["./src/index.ts", "./src/matchers.ts", "./src/extend-expect.ts"]
 
 export default defineConfig([
 	{
@@ -10,4 +10,4 @@ export default defineConfig([
 		dts: true,
 		outDir: "dist",
 	},
-]);
+])
