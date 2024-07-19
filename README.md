@@ -69,8 +69,8 @@ import { axe, toHaveNoViolations } from "vitest-axe"
 expect.extend(toHaveNoViolations)
 
 it("should have no axe violations", async () => {
-	const html = "<html><!-- accessible markup! --></html>"
-	expect(await axe(html)).toHaveNoViolations()
+  const html = "<html><!-- accessible markup! --></html>"
+  expect(await axe(html)).toHaveNoViolations()
 })
 ```
 
@@ -87,8 +87,8 @@ import "vitest"
 import type { AxeMatchers } from "vitest-axe/matchers"
 
 declare module "vitest" {
-	export interface Assertion extends AxeMatchers {}
-	export interface AsymmetricMatchersContaining extends AxeMatchers {}
+  export interface Assertion extends AxeMatchers {}
+  export interface AsymmetricMatchersContaining extends AxeMatchers {}
 }
 ```
 
@@ -103,10 +103,10 @@ Further reading:
 import { axe } from "vitest-axe"
 
 it("should demonstrate this matcher's usage", async () => {
-	const render = () => '<img src="#"/>'
-	// pass anything that outputs html to axe
-	const html = render()
-	expect(await axe(html)).toHaveNoViolations()
+  const render = () => '<img src="#"/>'
+  // pass anything that outputs html to axe
+  const html = render()
+  expect(await axe(html)).toHaveNoViolations()
 })
 ```
 
