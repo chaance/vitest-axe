@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/composite-actions/install
         with:
           node-version-file: ".nvmrc"
-          pnpm-version: 8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f
+          pnpm-version: 9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903
 
       - name: Build
         run: pnpm build
@@ -40,7 +40,7 @@ jobs:
         uses: ./.github/composite-actions/install
         with:
           node-version-file: ".nvmrc"
-          pnpm-version: 8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f
+          pnpm-version: 9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903
 
       - name: Type Check
         run: pnpm typecheck
@@ -56,7 +56,7 @@ jobs:
         uses: ./.github/composite-actions/install
         with:
           node-version-file: ".nvmrc"
-          pnpm-version: 8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f
+          pnpm-version: 9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903
 
       - name: Lint
         run: pnpm lint
@@ -72,7 +72,7 @@ jobs:
         uses: ./.github/composite-actions/install
         with:
           node-version-file: ".nvmrc"
-          pnpm-version: 8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f
+          pnpm-version: 9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903
 
       - name: Format Check
         run: pnpm format-check
@@ -92,7 +92,7 @@ jobs:
         uses: ./.github/composite-actions/install
         with:
           node-version: ${{ matrix.node-version }}
-          pnpm-version: 8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f
+          pnpm-version: 9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903
 
       - name: Test
         run: pnpm test
