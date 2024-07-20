@@ -41,6 +41,7 @@
     "test": "vitest",
     "build": "tsup",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write '**/*.{ts,js}'",
     "clean": "rm -rf dist && rm -rf node_modules"
   },
