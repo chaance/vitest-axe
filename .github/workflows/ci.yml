@@ -17,20 +17,10 @@ jobs:
     name: Build 🛠️
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Checkout and Install
+        uses: ./.github/composite-actions/install
         with:
-          node-version-file: '.nvmrc'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: |
-            - args: [--frozen-lockfile]
+          node-version-file: ".nvmrc"
 
       - name: Build
         run: pnpm build
@@ -39,20 +29,10 @@ jobs:
     name: Lint 🔎
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Checkout and Install
+        uses: ./.github/composite-actions/install
         with:
-          node-version-file: '.nvmrc'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: |
-            - args: [--frozen-lockfile]
+          node-version-file: ".nvmrc"
 
       - name: Lint
         run: pnpm lint
@@ -65,20 +45,10 @@ jobs:
         node-version: [16.x, 18.x, 20.x]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Checkout and Install
+        uses: ./.github/composite-actions/install
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: |
-            - args: [--frozen-lockfile]
 
       - name: Test
         run: pnpm test
