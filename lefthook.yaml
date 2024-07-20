@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      root: "."
+      glob: "*.{ts,js}"
+      run: pnpm eslint {staged_files} --max-warnings=0
+    format-check:
+      root: "."
+      glob: "*.{ts,js}"
+      run: pnpm prettier --check {staged_files}
+    type-check:
+      root: "."
+      glob: "*.{ts,js}"
+      run: pnpm tsc {staged_files} --noEmit
