@@ -55,7 +55,7 @@
     "@eslint/compat": "^1.1.1",
     "@types/aria-query": "^5.0.1",
     "@types/lodash-es": "^4.17.8",
-    "@types/node": "^18.17.11",
+    "@types/node": "^20.14.11",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "esbuild": "^0.19.2",
