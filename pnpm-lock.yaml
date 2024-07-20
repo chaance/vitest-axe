@@ -16,6 +16,9 @@ dependencies:
     version: 4.17.21
 
 devDependencies:
+  '@eslint/compat':
+    specifier: ^1.1.1
+    version: 1.1.1
   '@types/aria-query':
     specifier: ^5.0.1
     version: 5.0.1
@@ -496,6 +499,11 @@ packages:
   /@eslint-community/regexpp@4.7.0:
     resolution: {integrity: sha512-+HencqxU7CFJnQb7IKtuNBqS6Yx3Tz4kOL8BJXo+JyeiBm5MEX6pO8onXDkjrkCRlfYXS1Axro15ZjVFe9YgsA==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+    dev: true
+
+  /@eslint/compat@1.1.1:
+    resolution: {integrity: sha512-lpHyRyplhGPL5mGEh6M9O5nnKk0Gz4bFI+Zu6tKlPpDUN7XshWvH9C/px4UVm87IAANE0W81CEsNGbS1KlzXpA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
   /@eslint/config-array@0.17.0:
