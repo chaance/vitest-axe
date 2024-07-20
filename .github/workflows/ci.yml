@@ -17,7 +17,10 @@ jobs:
     name: Build 🛠️
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout and Install
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Install
         uses: ./.github/composite-actions/install
         with:
           node-version-file: ".nvmrc"
@@ -29,7 +32,10 @@ jobs:
     name: Lint 🔎
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout and Install
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Install
         uses: ./.github/composite-actions/install
         with:
           node-version-file: ".nvmrc"
@@ -45,7 +51,10 @@ jobs:
         node-version: [16.x, 18.x, 20.x]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout and Install
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Install
         uses: ./.github/composite-actions/install
         with:
           node-version: ${{ matrix.node-version }}
