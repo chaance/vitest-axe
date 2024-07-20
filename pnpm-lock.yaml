@@ -49,6 +49,9 @@ devDependencies:
   fast-glob:
     specifier: ^3.3.1
     version: 3.3.1
+  globals:
+    specifier: ^15.8.0
+    version: 15.8.0
   jsdom:
     specifier: ^22.1.0
     version: 22.1.0
@@ -2133,6 +2136,11 @@ packages:
 
   /globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+    engines: {node: '>=18'}
+    dev: true
+
+  /globals@15.8.0:
+    resolution: {integrity: sha512-VZAJ4cewHTExBWDHR6yptdIBlx9YSSZuwojj9Nt5mBRXQzrKakDsVKQ1J63sklLvzAJm0X5+RpO4i3Y2hcOnFw==}
     engines: {node: '>=18'}
     dev: true
 
