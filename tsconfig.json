@@ -21,7 +21,7 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "module": "ESNext",
     "target": "ES2020"
+    "module": "esnext",
   }
 }
