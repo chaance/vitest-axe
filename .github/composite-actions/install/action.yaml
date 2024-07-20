@@ -18,7 +18,7 @@ runs:
       uses: actions/checkout@v4.1.7
 
     - name: Install Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4.0.3
       with:
         node-version: ${{ inputs.node-version }}
         node-version-file: ${{ inputs.node-version-file }}
