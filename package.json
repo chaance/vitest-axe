@@ -77,5 +77,8 @@
   },
   "peerDependencies": {
     "vitest": ">=0.31.0"
+  },
+  "engines": {
+    "node": ">=18.x"
   }
 }
