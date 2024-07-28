@@ -6,17 +6,24 @@ import {
 import globals from "globals"
 import pluginImport from "eslint-plugin-import"
 import { fixupPluginRules } from "@eslint/compat"
+import { fileURLToPath } from "node:url"
+import { dirname, resolve } from "node:path"
 
 export default tseslintConfig(
   {
+    name: "@vitest-axe/ignores/base",
     ignores: ["dist", "extend-expect.d.ts", "matchers.d.ts"],
   },
   {
-    files: ["**/*.{js,mjs,ts}"],
+    files: ["**/*.js", "**/*.mjs", "**/*.ts"],
+    name: "@vitest-axe/language-options/base",
     languageOptions: {
       parser: tseslintParser,
       parserOptions: {
-        project: "./tsconfig.json",
+        project: resolve(
+          dirname(fileURLToPath(import.meta.url)),
+          "./tsconfig.json",
+        ),
         ecmaVersion: 2022,
         sourceType: "module",
         warnOnUnsupportedTypeScriptVersion: true,
@@ -27,6 +34,9 @@ export default tseslintConfig(
         ...globals.es2021,
       },
     },
+  },
+  {
+    name: "@vitest-axe/eslint/base",
     rules: {
       "array-callback-return": "warn",
       "new-parens": "warn",
@@ -121,41 +131,9 @@ export default tseslintConfig(
     },
   },
   {
-    files: ["**/*.{js,mjs,ts}"],
-    plugins: {
-      import: fixupPluginRules(pluginImport),
-    },
-    settings: {
-      "import/ignore": ["node_modules", "\\.(css|md|svg|json)$"],
-      "import/parsers": {
-        tseslintParser: [".ts", ".tsx", ".d.ts"],
-      },
-      "import/resolver": {
-        node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx"],
-        },
-        typescript: {
-          alwaysTryTypes: true,
-        },
-      },
-    },
-    rules: {
-      "import/first": "error",
-      "import/no-amd": "error",
-      "import/no-webpack-loader-syntax": "error",
-    },
-  },
-  {
-    files: ["src/**/*.ts"],
-    languageOptions: {
-      parser: tseslintParser,
-      parserOptions: {
-        project: "./tsconfig.json",
-        ecmaVersion: 2022,
-        sourceType: "module",
-        warnOnUnsupportedTypeScriptVersion: true,
-      },
-    },
+    name: "@vitest-axe/typescript/base",
+    files: ["**/*.js", "**/*.mjs", "**/*.ts"],
+
     plugins: {
       "@typescript-eslint": tseslintPlugin,
     },
@@ -204,6 +182,32 @@ export default tseslintConfig(
 
       "no-useless-constructor": "off",
       "@typescript-eslint/no-useless-constructor": "warn",
+    },
+  },
+  {
+    name: "@vitest-axe/import/base",
+    files: ["**/*.js", "**/*.mjs", "**/*.ts"],
+    plugins: {
+      import: fixupPluginRules(pluginImport),
+    },
+    settings: {
+      "import/ignore": ["node_modules", "\\.(css|md|svg|json)$"],
+      "import/parsers": {
+        tseslintParser: [".ts", ".tsx", ".d.ts"],
+      },
+      "import/resolver": {
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+        typescript: {
+          alwaysTryTypes: true,
+        },
+      },
+    },
+    rules: {
+      "import/first": "error",
+      "import/no-amd": "error",
+      "import/no-webpack-loader-syntax": "error",
     },
   },
 )
