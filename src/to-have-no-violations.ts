@@ -1,9 +1,8 @@
-import chalk from "chalk"
 import type { AxeCore } from "./core"
-import { printReceived, matcherHint } from "./utils"
+import { matcherHint } from "./utils"
 import type { MatcherResult } from "./types"
-import { LINE_BREAK, HORIZONTAL_LINE } from "./consts"
-
+import { LINE_BREAK } from "./consts"
+import { reporter } from "./reporter"
 
 /**
  * A custom matcher that can check aXe results for violations.
@@ -29,42 +28,6 @@ export function toHaveNoViolations(
     // @ts-expect-error
     results.toolOptions?.impactLevels ?? [],
   )
-
-  function reporter(violations: AxeCore.Result[]) {
-    if (violations.length === 0) {
-      return []
-    }
-
-    return violations
-      .map((violation) => {
-        const errorBody = violation.nodes
-          .map((node) => {
-            const selector = node.target.join(", ")
-            const expectedText =
-              `Expected the HTML found at $('${selector}') to have no violations:` +
-              LINE_BREAK
-            return (
-              expectedText +
-              chalk.grey(node.html) +
-              LINE_BREAK +
-              `Received:` +
-              LINE_BREAK +
-              printReceived(`${violation.help} (${violation.id})`) +
-              LINE_BREAK +
-              chalk.yellow(node.failureSummary) +
-              LINE_BREAK +
-              (violation.helpUrl
-                ? `You can find more information on this issue here: \n${chalk.blue(
-                    violation.helpUrl,
-                  )}`
-                : "")
-            )
-          })
-          .join(LINE_BREAK)
-        return errorBody
-      })
-      .join(LINE_BREAK + HORIZONTAL_LINE + LINE_BREAK)
-  }
 
   const formattedViolations = reporter(violations)
   const pass = formattedViolations.length === 0
