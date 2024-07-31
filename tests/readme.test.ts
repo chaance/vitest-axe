@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { configureAxe, axe } from "../src/index"
-import type Axe from "axe-core"
+import type { AxeCore } from "../src/index"
 
 // See https://github.com/nickcolley/jest-axe#readme
 describe("readme", () => {
@@ -84,7 +84,7 @@ describe("readme", () => {
           },
         },
       }
-      const rule: Axe.Rule = {
+      const rule: AxeCore.Rule = {
         id: "demo-rule",
         selector: ".demo",
         enabled: false,
@@ -94,7 +94,6 @@ describe("readme", () => {
           description: "Demo check",
           help: "Demo check",
           helpUrl: "https://example.com",
-          tags: ["demo-rules"],
         },
       }
 
