@@ -2,6 +2,8 @@ import chalk from "chalk"
 import type { AxeCore } from "./core"
 import { printReceived, matcherHint } from "./utils"
 import type { MatcherResult } from "./types"
+import { LINE_BREAK, HORIZONTAL_LINE } from "./consts"
+
 
 /**
  * A custom matcher that can check aXe results for violations.
@@ -33,9 +35,6 @@ export function toHaveNoViolations(
       return []
     }
 
-    const lineBreak = "\n\n"
-    const horizontalLine = "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
-
     return violations
       .map((violation) => {
         const errorBody = violation.nodes
@@ -43,17 +42,17 @@ export function toHaveNoViolations(
             const selector = node.target.join(", ")
             const expectedText =
               `Expected the HTML found at $('${selector}') to have no violations:` +
-              lineBreak
+              LINE_BREAK
             return (
               expectedText +
               chalk.grey(node.html) +
-              lineBreak +
+              LINE_BREAK +
               `Received:` +
-              lineBreak +
+              LINE_BREAK +
               printReceived(`${violation.help} (${violation.id})`) +
-              lineBreak +
+              LINE_BREAK +
               chalk.yellow(node.failureSummary) +
-              lineBreak +
+              LINE_BREAK +
               (violation.helpUrl
                 ? `You can find more information on this issue here: \n${chalk.blue(
                     violation.helpUrl,
@@ -61,10 +60,10 @@ export function toHaveNoViolations(
                 : "")
             )
           })
-          .join(lineBreak)
+          .join(LINE_BREAK)
         return errorBody
       })
-      .join(lineBreak + horizontalLine + lineBreak)
+      .join(LINE_BREAK + HORIZONTAL_LINE + LINE_BREAK)
   }
 
   const formattedViolations = reporter(violations)
@@ -77,7 +76,7 @@ export function toHaveNoViolations(
     }
     return (
       // eslint-disable-next-line no-useless-concat
-      matcherHint(".toHaveNoViolations") + "\n\n" + `${formattedViolations}`
+      matcherHint(".toHaveNoViolations") + LINE_BREAK + `${formattedViolations}`
     )
   }
 

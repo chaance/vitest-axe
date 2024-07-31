@@ -10,6 +10,7 @@ import {
   format as prettyFormat,
   plugins as prettyFormatPlugins,
 } from "pretty-format"
+import { MIDDLE_DOT } from "./consts"
 
 const {
   AsymmetricMatcher,
@@ -46,7 +47,7 @@ export type MatcherHintOptions = {
 
 const EXPECTED_COLOR = chalk.green
 const RECEIVED_COLOR = chalk.red
-const SPACE_SYMBOL = "\u{00B7}" // middle dot
+const SPACE_SYMBOL = MIDDLE_DOT
 
 function stringify(object: unknown, maxDepth = 10, maxWidth = 10): string {
   const MAX_LENGTH = 10000
