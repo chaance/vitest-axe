@@ -74,7 +74,7 @@
     "vitest": "^0.34.3"
   },
   "peerDependencies": {
-    "vitest": ">=0.31.0"
+    "vitest": "1"
   },
   "engines": {
     "node": ">=18.x"
