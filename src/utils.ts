@@ -81,27 +81,27 @@ function stringify(object: unknown, maxDepth = 10, maxWidth = 10): string {
 
 // Instead of inverse highlight which now implies a change,
 // replace common spaces with middle dot at the end of any line.
-function replaceTrailingSpaces(text: string): string {
+const replaceTrailingSpaces = (text: string): string => {
   return text.replace(/\s+$/gm, (spaces) => SPACE_SYMBOL.repeat(spaces.length))
 }
 
-export function printReceived(object: unknown): string {
+export const printReceived = (object: unknown): string => {
   return RECEIVED_COLOR(replaceTrailingSpaces(stringify(object)))
 }
 
-export function printExpected(value: unknown): string {
+export const printExpected = (value: unknown): string => {
   return EXPECTED_COLOR(replaceTrailingSpaces(stringify(value)))
 }
 
 // Display assertion for the report when a test fails.
 // New format: rejects/resolves, not, and matcher name have black color
 // Old format: matcher name has dim color
-export function matcherHint(
+export const matcherHint = (
   matcherName: string,
   received = "received",
   expected = "expected",
   options: MatcherHintOptions = {},
-): string {
+): string => {
   const {
     comment = "",
     expectedColor = EXPECTED_COLOR,
