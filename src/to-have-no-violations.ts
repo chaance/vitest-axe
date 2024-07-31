@@ -1,5 +1,5 @@
 import chalk from "chalk"
-import type AxeCore from "axe-core"
+import type { AxeCore } from "./core"
 import { printReceived, matcherHint } from "./utils"
 import type { MatcherResult } from "./types"
 
