@@ -19,7 +19,7 @@ export function toHaveNoViolations(
     )
   }
 
-  let violations = filterViolations(
+  const violations = filterViolations(
     results.violations,
     // `impactLevels` is not a valid toolOption but one we add to the config
     // when calling `run`. axe just happens to pass this along. Might be a safer
@@ -33,15 +33,15 @@ export function toHaveNoViolations(
       return []
     }
 
-    let lineBreak = "\n\n"
-    let horizontalLine = "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+    const lineBreak = "\n\n"
+    const horizontalLine = "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
 
     return violations
       .map((violation) => {
-        let errorBody = violation.nodes
+        const errorBody = violation.nodes
           .map((node) => {
-            let selector = node.target.join(", ")
-            let expectedText =
+            const selector = node.target.join(", ")
+            const expectedText =
               `Expected the HTML found at $('${selector}') to have no violations:` +
               lineBreak
             return (
@@ -67,8 +67,8 @@ export function toHaveNoViolations(
       .join(lineBreak + horizontalLine + lineBreak)
   }
 
-  let formatedViolations = reporter(violations)
-  let pass = formatedViolations.length === 0
+  const formatedViolations = reporter(violations)
+  const pass = formatedViolations.length === 0
 
   function message(): string {
     if (pass) {
