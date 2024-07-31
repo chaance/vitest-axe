@@ -1,7 +1,8 @@
-import type AxeCore from "axe-core"
+import AxeCore from "axe-core"
 import { merge } from "lodash-es"
 import { isHTMLElement, isHTMLString } from "./utils"
-import { configure, run, getRules } from "axe-core"
+
+const { configure, run, getRules } = AxeCore
 
 const AXE_RULES_COLOR = getRules(["cat.color"])
 
