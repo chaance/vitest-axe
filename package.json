@@ -71,7 +71,7 @@
     "tsup": "^8.2.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.16.1",
-    "vitest": "^0.34.3"
+    "vitest": "^2.0.4"
   },
   "peerDependencies": {
     "vitest": "1"
