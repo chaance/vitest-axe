@@ -6,7 +6,7 @@ export default defineConfig({
     setupFiles: ["tests/setupTests.ts"],
     watch: false,
     coverage: {
-      include: ["**/*.test.{ts,js}"],
+      include: ["tests/**/*.test.{ts,js}"],
       exclude: [...configDefaults.exclude],
     },
   },
