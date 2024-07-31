@@ -49,7 +49,7 @@ const RECEIVED_COLOR = chalk.red
 const SPACE_SYMBOL = "\u{00B7}" // middle dot
 
 function stringify(object: unknown, maxDepth = 10, maxWidth = 10): string {
-  let MAX_LENGTH = 10000
+  const MAX_LENGTH = 10000
   let result
 
   try {
