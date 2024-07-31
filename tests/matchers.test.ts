@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest"
 import { toHaveNoViolations } from "../src/matchers"
 import { axe } from "../src/index"
 import type { AxeCore } from "../src/index"

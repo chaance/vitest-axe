@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest"
 import { configureAxe, axe } from "../src/index"
 import type { AxeCore } from "../src/index"
 
