@@ -67,8 +67,8 @@ export function toHaveNoViolations(
       .join(lineBreak + horizontalLine + lineBreak)
   }
 
-  const formatedViolations = reporter(violations)
-  const pass = formatedViolations.length === 0
+  const formattedViolations = reporter(violations)
+  const pass = formattedViolations.length === 0
 
   function message(): string {
     if (pass) {
@@ -77,7 +77,7 @@ export function toHaveNoViolations(
     }
     return (
       // eslint-disable-next-line no-useless-concat
-      matcherHint(".toHaveNoViolations") + "\n\n" + `${formatedViolations}`
+      matcherHint(".toHaveNoViolations") + "\n\n" + `${formattedViolations}`
     )
   }
 
@@ -86,7 +86,7 @@ export function toHaveNoViolations(
 
 /**
  * Filters all violations by user impact
- * @param violations result of the accessibilty check by axe
+ * @param violations result of the accessibility check by axe
  * @param impactLevels defines which impact level should be considered (e.g ['critical'])
  * The level of impact can be "minor", "moderate", "serious", or "critical".
  * @returns violations filtered by impact level
