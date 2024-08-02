@@ -1,6 +1,6 @@
 import type { AxeCore } from "./core"
 import { matcherHint } from "./utils"
-import type { MatcherResult } from "./types"
+import type { NoViolationsMatcherResult } from "./types"
 import { LINE_BREAK } from "./consts"
 import { reporter } from "./reporter"
 
@@ -59,15 +59,4 @@ const filterViolations = (violations: AxeCore.Result[], impactLevels: AxeCore.Im
   }
 
   return violations
-}
-
-export interface NoViolationsMatcherResult extends MatcherResult {
-  actual: AxeCore.Result[]
-}
-
-export interface AxeMatchers {
-  /**
-   * A custom matcher that can check aXe results for violations.
-   */
-  toHaveNoViolations(): NoViolationsMatcherResult
 }
