@@ -9,7 +9,7 @@ const AXE_RULES_COLOR = AxeCore.getRules(["cat.color"])
  * @param html HTML element or a HTML string
  * @returns HTML element and a function to restore the document
  */
-function mount(html: Element | string): [HTMLElement, () => void] {
+const mount = (html: Element | string): [HTMLElement, () => void] => {
   if (isHTMLElement(html)) {
     if (document.body.contains(html)) {
       return [html, () => undefined]
@@ -17,14 +17,12 @@ function mount(html: Element | string): [HTMLElement, () => void] {
     html = html.outerHTML
   }
 
-  if (isHTMLString(html)) {
-    let originalHTML = document.body.innerHTML
-    function restore() {
-      document.body.innerHTML = originalHTML
-    }
-
+  if(isHTMLString(html)) {
+    const originalHTML = document.body.innerHTML
     document.body.innerHTML = html
-    return [document.body, restore]
+    return [document.body, () => {
+      document.body.innerHTML = originalHTML
+    }]
   }
 
   if (typeof html === "string") {
