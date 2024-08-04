@@ -53,7 +53,10 @@ export function toHaveNoViolations(
  * The level of impact can be "minor", "moderate", "serious", or "critical".
  * @returns violations filtered by impact level
  */
-const filterViolations = (violations: AxeCore.Result[], impactLevels: AxeCore.ImpactValue[]): AxeCore.Result[] => {
+const filterViolations = (
+  violations: AxeCore.Result[],
+  impactLevels: AxeCore.ImpactValue[],
+): AxeCore.Result[] => {
   if (impactLevels?.length > 0) {
     return violations.filter((v) => impactLevels.includes(v.impact!))
   }

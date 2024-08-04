@@ -3,7 +3,9 @@ import type { AxeCore } from "./core"
 import { LINE_BREAK, HORIZONTAL_LINE } from "./consts"
 import { printReceived } from "./utils"
 
-const violationResolveHelpText = (violation: Pick<AxeCore.Result, "helpUrl">) => {
+const violationResolveHelpText = (
+  violation: Pick<AxeCore.Result, "helpUrl">,
+) => {
   return `You can find more information on this issue here: \n${chalk.blue(violation.helpUrl)}`
 }
 
