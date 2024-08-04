@@ -17,12 +17,15 @@ const mount = (html: Element | string): [HTMLElement, () => void] => {
     html = html.outerHTML
   }
 
-  if(isHTMLString(html)) {
+  if (isHTMLString(html)) {
     const originalHTML = document.body.innerHTML
     document.body.innerHTML = html
-    return [document.body, () => {
-      document.body.innerHTML = originalHTML
-    }]
+    return [
+      document.body,
+      () => {
+        document.body.innerHTML = originalHTML
+      },
+    ]
   }
 
   if (typeof html === "string") {
