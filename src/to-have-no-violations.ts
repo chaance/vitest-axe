@@ -38,7 +38,6 @@ export function toHaveNoViolations(
       return
     }
     return (
-      // eslint-disable-next-line no-useless-concat
       matcherHint(".toHaveNoViolations") + LINE_BREAK + `${formattedViolations}`
     )
   }
