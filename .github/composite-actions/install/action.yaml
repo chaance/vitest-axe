@@ -11,11 +11,6 @@ inputs:
     description: "Path to the Node.js version file. According to the specifications of actions/setup-node, if both node-version and node-version-file are provided as inputs, node-version takes precedence."
     required: false
 
-  pnpm-version:
-    description: "pnpm version to install"
-    required: false
-    default: "9.5.0"
-
 runs:
   using: composite
   steps:
@@ -28,5 +23,4 @@ runs:
     - name: Install pnpm
       uses: pnpm/action-setup@v4.0.0
       with:
-        version: ${{ inputs.pnpm-version }}
         run_install: true
