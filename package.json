@@ -40,10 +40,10 @@
   "scripts": {
     "test": "vitest",
     "build": "tsup",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings=0 --cache",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write '**/*.{ts,js}'",
-    "format-check": "prettier --check '**/*.{ts,js}'",
+    "format": "prettier --write '**/*.{ts,js}' --cache",
+    "format-check": "prettier --check '**/*.{ts,js}' --cache",
     "clean": "rm -rf dist && rm -rf node_modules"
   },
   "dependencies": {
