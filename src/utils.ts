@@ -165,7 +165,7 @@ export const matcherHint = (
  * Checks that the HTML parameter provided is a string that contains HTML.
  * @param html a HTML element or a HTML string
  */
-export function isHTMLString(html: any): html is string {
+export const isHTMLString = (html: any): html is string => {
   return typeof html === "string" && /(<([^>]+)>)/i.test(html)
 }
 
@@ -173,6 +173,6 @@ export function isHTMLString(html: any): html is string {
  * Checks if the HTML parameter provided is a HTML element.
  * @param html a HTML element or a HTML string
  */
-export function isHTMLElement(html: any): html is HTMLElement {
+export const isHTMLElement = (html: any): html is HTMLElement => {
   return !!html && typeof html === "object" && typeof html.tagName === "string"
 }
