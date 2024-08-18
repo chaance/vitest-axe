@@ -153,6 +153,12 @@ export default tseslintConfig(
   },
   {
     name: "@vitest-axe/ignores/base",
-    ignores: ["dist", "extend-expect.d.ts", "matchers.d.ts"],
+    ignores: [
+      "dist",
+      "extend-expect.js",
+      "extend-expect.d.ts",
+      "matchers.js",
+      "matchers.d.ts"
+    ],
   },
 )
