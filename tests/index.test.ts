@@ -36,7 +36,7 @@ describe("axe", () => {
 
   test("can be configured for global configs", async () => {
     const results = await linkNameAxe(failingHtmlExample)
-    expect(results.violations).toEqual([])
+    expect(results.violations).toStrictEqual([])
   })
 
   test("can pass in merged configurations to configured axe", async () => {
@@ -46,7 +46,7 @@ describe("axe", () => {
         region: { enabled: false },
       },
     })
-    expect(results.violations).toEqual([])
+    expect(results.violations).toStrictEqual([])
   })
 
   test("returns an axe results object", async () => {
@@ -59,7 +59,7 @@ describe("axe", () => {
     const el = document.body.appendChild(document.createElement("div"))
     await axe(goodHtmlExample)
     expect(document.body.childElementCount).toBe(1)
-    expect(document.body.firstChild).toEqual(el)
+    expect(document.body.firstChild).toStrictEqual(el)
   })
 
   test("returns violations for failing html example", async () => {
@@ -75,12 +75,12 @@ describe("axe", () => {
         "link-name": { enabled: false },
       },
     })
-    expect(results.violations).toEqual([])
+    expect(results.violations).toStrictEqual([])
   })
 
   test("returns no violations for a good html example", async () => {
     const results = await axe(goodHtmlExample)
-    expect(results.violations).toEqual([])
+    expect(results.violations).toStrictEqual([])
   })
 
   test("throws if input is not a string, vue element, react element, or react testing library render", () => {
@@ -102,7 +102,7 @@ describe("axe", () => {
         "link-name": { enabled: false },
       },
     })
-    expect(results.violations).toEqual([])
+    expect(results.violations).toStrictEqual([])
 
     const configuredAxe = configureAxe({
       rules: {
@@ -115,7 +115,7 @@ describe("axe", () => {
         "link-name": { enabled: false },
       },
     })
-    expect(results.violations).toEqual([])
+    expect(results.violations).toStrictEqual([])
 
     results = await axe(failingHtmlExample)
     const violation = results.violations[0]

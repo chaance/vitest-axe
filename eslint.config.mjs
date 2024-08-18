@@ -139,6 +139,7 @@ export default tseslintConfig(
           "withinDescribe": "test",
         }
       ],
+      "vitest/prefer-strict-equal": "error"
     },
     settings: {
       vitest: {
