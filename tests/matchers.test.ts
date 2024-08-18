@@ -107,7 +107,7 @@ const FAILING_AXE_RESULTS: AxeCore.AxeResults = {
 describe("toHaveNoViolations", () => {
   test("returns a matcher function", () => {
     expect(toHaveNoViolations).toBeDefined()
-    expect(typeof toHaveNoViolations).toBe("function")
+    expectTypeOf(toHaveNoViolations).toBeFunction()
   })
 
   test("throws error if non axe results object is passed", () => {
@@ -131,7 +131,7 @@ describe("toHaveNoViolations", () => {
 
   test("returns correctly formatted message when violations are present", () => {
     const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
-    expect(typeof matcherOutput.message).toBe("function")
+    expectTypeOf(matcherOutput.message).toBeFunction()
     expect(matcherOutput.message()).toMatchSnapshot()
   })
 

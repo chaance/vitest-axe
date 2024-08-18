@@ -1,3 +1,4 @@
+import { AxeResults } from "axe-core"
 import { configureAxe, axe } from "../src/index"
 
 describe("axe", () => {
@@ -51,8 +52,7 @@ describe("axe", () => {
 
   test("returns an axe results object", async () => {
     const results = await axe(failingHtmlExample)
-    expect(typeof results).toBe("object")
-    expect(typeof results.violations).toBe("object")
+    expectTypeOf(results).toMatchTypeOf<AxeResults>()
   })
 
   test("should not mutate the content of document.body permanently", async () => {
