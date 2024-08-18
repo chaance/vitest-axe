@@ -10,5 +10,8 @@ export default defineConfig({
       include: ["tests/**/*.test.{ts,js}"],
       exclude: [...configDefaults.exclude],
     },
+    typecheck: {
+      enabled: true
+    }
   },
 })
