@@ -4,7 +4,7 @@ import type { AxeCore } from "../src/index"
 // See https://github.com/nickcolley/jest-axe#readme
 describe("readme", () => {
   describe("first readme example", () => {
-    it("should demonstrate this matcher`s usage", async () => {
+    test("should demonstrate this matcher`s usage", async () => {
       let render = () => '<img src="#"/>'
 
       // pass anything that outputs html to axe
@@ -17,7 +17,7 @@ describe("readme", () => {
   })
 
   describe("readme axe config example", () => {
-    it("should demonstrate this matcher`s usage with a custom config", async () => {
+    test("should demonstrate this matcher`s usage with a custom config", async () => {
       const render = () => `
           <div>
             <img src="#"/>
@@ -55,7 +55,7 @@ describe("readme", () => {
     // Individual test file (test.js)
     const axe = exportedAxe // require('./axe-helper.js')
 
-    it("should demonstrate this matcher`s usage with a default config", async () => {
+    test("should demonstrate this matcher`s usage with a default config", async () => {
       const render = () => `
           <div>
             <img src="#"/>
@@ -70,7 +70,7 @@ describe("readme", () => {
   })
 
   describe("configure custom rule", () => {
-    it("should report custom rules", async () => {
+    test("should report custom rules", async () => {
       const check: any = {
         id: "demo-has-data",
         evaluate(node: Element) {
@@ -127,7 +127,7 @@ describe("readme", () => {
       impactLevels: ["critical"],
     })
 
-    it("should pass the test, because only critical violations are noted.", async () => {
+    test("should pass the test, because only critical violations are noted.", async () => {
       // 1 x moderate violation -> https://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI
       const render = () => `
           <div>

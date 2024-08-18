@@ -121,7 +121,7 @@ export default tseslintConfig(
   },
   {
     name: "@vitest-axe/vitest/base",
-    files: ["test/**/*.test.ts", "test/**/*.test.tsx"],
+    files: ["tests/**/*.test.ts", "tests/**/*.test.tsx"],
     plugins: {
       vitest: fixupPluginRules(pluginVitest),
     },
@@ -132,6 +132,13 @@ export default tseslintConfig(
     },
     rules: {
       ...pluginVitest.configs.recommended.rules,
+      "vitest/consistent-test-it": [
+        "error",
+        {
+          "fn": "test",
+          "withinDescribe": "test",
+        }
+      ],
     },
     settings: {
       vitest: {

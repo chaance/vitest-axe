@@ -105,12 +105,12 @@ const FAILING_AXE_RESULTS: AxeCore.AxeResults = {
 }
 
 describe("toHaveNoViolations", () => {
-  it("returns a matcher function", () => {
+  test("returns a matcher function", () => {
     expect(toHaveNoViolations).toBeDefined()
     expect(typeof toHaveNoViolations).toBe("function")
   })
 
-  it("throws error if non axe results object is passed", () => {
+  test("throws error if non axe results object is passed", () => {
     expect(() => {
       // @ts-expect-error
       toHaveNoViolations({})
@@ -119,28 +119,28 @@ describe("toHaveNoViolations", () => {
     )
   })
 
-  it("returns pass as true when no violations are present", () => {
+  test("returns pass as true when no violations are present", () => {
     const matcherOutput = toHaveNoViolations(PASSING_AXE_RESULTS)
     expect(matcherOutput.pass).toBe(true)
   })
 
-  it("returns same violations that are passed in the results object", () => {
+  test("returns same violations that are passed in the results object", () => {
     const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
     expect(matcherOutput.actual).toBe(FAILING_AXE_RESULTS.violations)
   })
 
-  it("returns correctly formatted message when violations are present", () => {
+  test("returns correctly formatted message when violations are present", () => {
     const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
     expect(typeof matcherOutput.message).toBe("function")
     expect(matcherOutput.message()).toMatchSnapshot()
   })
 
-  it("returns pass as false when violations are present", () => {
+  test("returns pass as false when violations are present", () => {
     const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
     expect(matcherOutput.pass).toBe(false)
   })
 
-  it("returns properly formatted text with more complex example", async () => {
+  test("returns properly formatted text with more complex example", async () => {
     const complexHtmlExample = `
         <html>
           <body>
