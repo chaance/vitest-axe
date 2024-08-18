@@ -1,4 +1,4 @@
-import { AxeResults } from "axe-core"
+import type { AxeResults } from "axe-core"
 import { configureAxe, axe } from "../src/index"
 
 describe("axe", () => {
