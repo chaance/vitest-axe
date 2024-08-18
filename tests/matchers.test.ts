@@ -121,7 +121,7 @@ describe("toHaveNoViolations", () => {
 
   test("returns pass as true when no violations are present", () => {
     const matcherOutput = toHaveNoViolations(PASSING_AXE_RESULTS)
-    expect(matcherOutput.pass).toBe(true)
+    expect(matcherOutput.pass).toBeTruthy()
   })
 
   test("returns same violations that are passed in the results object", () => {
@@ -137,7 +137,7 @@ describe("toHaveNoViolations", () => {
 
   test("returns pass as false when violations are present", () => {
     const matcherOutput = toHaveNoViolations(FAILING_AXE_RESULTS)
-    expect(matcherOutput.pass).toBe(false)
+    expect(matcherOutput.pass).toBeFalsy()
   })
 
   test("returns properly formatted text with more complex example", async () => {
