@@ -20,7 +20,7 @@ export default tseslintConfig(
           dirname(fileURLToPath(import.meta.url)),
           "./tsconfig.json",
         ),
-        ecmaVersion: 2022,
+        ecmaVersion: "latest",
         sourceType: "module",
         warnOnUnsupportedTypeScriptVersion: true,
       },
