@@ -11,7 +11,7 @@ export default defineConfig({
       exclude: [...configDefaults.exclude],
     },
     typecheck: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
 })
