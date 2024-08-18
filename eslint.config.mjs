@@ -142,6 +142,7 @@ export default tseslintConfig(
       "vitest/prefer-strict-equal": "error",
       "vitest/prefer-to-be-truthy": "error",
       "vitest/prefer-to-be-falsy": "error",
+      "vitest/prefer-to-be-object": "error"
     },
     settings: {
       vitest: {
