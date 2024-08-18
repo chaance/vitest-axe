@@ -6,6 +6,7 @@ import {
 } from "typescript-eslint"
 import globals from "globals"
 import pluginImport from "eslint-plugin-import"
+import pluginVitest from "@vitest/eslint-plugin"
 import { fixupPluginRules } from "@eslint/compat"
 import { fileURLToPath } from "node:url"
 import { dirname, resolve } from "node:path"
@@ -117,6 +118,26 @@ export default tseslintConfig(
       "import/no-amd": "error",
       "import/no-webpack-loader-syntax": "error",
     },
+  },
+  {
+    name: "@vitest-axe/vitest/base",
+    files: ["test/**/*.test.ts", "test/**/*.test.tsx"],
+    plugins: {
+      vitest: fixupPluginRules(pluginVitest),
+    },
+    languageOptions: {
+      globals: {
+        ...pluginVitest.environments.env.globals,
+      }
+    },
+    rules: {
+      ...pluginVitest.configs.recommended.rules,
+    },
+    settings: {
+      vitest: {
+        typecheck: true
+      }
+    }
   },
   {
     name: "@vitest-axe/ignores/base",
