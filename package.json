@@ -53,7 +53,9 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.1.1",
+    "@eslint/js": "^9.9.0",
     "@types/aria-query": "^5.0.4",
+    "@types/eslint__js": "^8.42.3",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.3.0",
     "esbuild": "^0.23.0",
