@@ -11,10 +11,6 @@ import { dirname, resolve } from "node:path"
 
 export default tseslintConfig(
   {
-    name: "@vitest-axe/ignores/base",
-    ignores: ["dist", "extend-expect.d.ts", "matchers.d.ts"],
-  },
-  {
     files: ["**/*.js", "**/*.mjs", "**/*.ts"],
     name: "@vitest-axe/language-options/base",
     languageOptions: {
@@ -209,5 +205,9 @@ export default tseslintConfig(
       "import/no-amd": "error",
       "import/no-webpack-loader-syntax": "error",
     },
+  },
+  {
+    name: "@vitest-axe/ignores/base",
+    ignores: ["dist", "extend-expect.d.ts", "matchers.d.ts"],
   },
 )
