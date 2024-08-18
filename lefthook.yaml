@@ -2,13 +2,11 @@ pre-commit:
   piped: true
   commands:
     format:
-      root: "."
       glob: "*.{ts,js,mjs,md,yaml,yml}"
       run: pnpm prettier {staged_files} -w
       stage_fixed: true
 
     lint:
-      root: "."
       glob: "*.{ts,js,mjs}"
       run: pnpm eslint {staged_files} --max-warnings=0 --fix
       stage_fixed: true
