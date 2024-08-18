@@ -102,7 +102,7 @@ export default tseslintConfig(
     settings: {
       "import/ignore": ["node_modules", "\\.(css|md|svg|json)$"],
       "import/parsers": {
-        tseslintParser: [".ts", ".tsx", ".d.ts"],
+        "@typescript-eslint/parser": [".js", ".ts", ".tsx", ".d.ts"],
       },
       "import/resolver": {
         node: {
@@ -114,6 +114,7 @@ export default tseslintConfig(
       },
     },
     rules: {
+      ...pluginImport.configs.recommended.rules,
       "import/first": "error",
       "import/no-amd": "error",
       "import/no-webpack-loader-syntax": "error",
