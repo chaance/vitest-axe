@@ -86,7 +86,10 @@ function configureAxe(
     additionalOptions: AxeCore.RunOptions = {},
   ): Promise<AxeCore.AxeResults> {
     const [element, restore] = mount(html)
-    const options: AxeCore.RunOptions = merge(merge({}, runnerOptions), additionalOptions)
+    const options: AxeCore.RunOptions = merge(
+      merge({}, runnerOptions),
+      additionalOptions,
+    )
 
     return new Promise<AxeCore.AxeResults>((resolve) => {
       AxeCore.run(element, options, (err, results) => {
