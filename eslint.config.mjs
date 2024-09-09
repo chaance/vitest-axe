@@ -8,8 +8,6 @@ import globals from "globals"
 import pluginImport from "eslint-plugin-import"
 import pluginVitest from "@vitest/eslint-plugin"
 import { fixupPluginRules } from "@eslint/compat"
-import { fileURLToPath } from "node:url"
-import { dirname, resolve } from "node:path"
 
 export default tseslintConfig(
   {
@@ -18,10 +16,7 @@ export default tseslintConfig(
     languageOptions: {
       parser: tseslintParser,
       parserOptions: {
-        project: resolve(
-          dirname(fileURLToPath(import.meta.url)),
-          "./tsconfig.json",
-        ),
+        project: true,
         ecmaVersion: "latest",
         sourceType: "module",
         warnOnUnsupportedTypeScriptVersion: true,
