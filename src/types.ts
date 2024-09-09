@@ -1,8 +1,9 @@
 import type { AxeCore } from "./core"
-export interface MatcherResult {
-  message(): string
-  pass: boolean
-}
+import type { expect } from "vitest"
+
+type MatcherResult = Awaited<
+  ReturnType<Parameters<typeof expect.extend>[0][string]>
+>
 
 export interface NoViolationsMatcherResult extends MatcherResult {
   actual: AxeCore.Result[]

@@ -1,6 +1,6 @@
 import { defineConfig } from "tsup"
 
-const entry = ["./src/index.ts", "./src/matchers.ts", "./src/extend-expect.ts"]
+const entry = ["./src/index.ts"]
 
 export default defineConfig({
   entry,

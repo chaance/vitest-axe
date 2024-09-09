@@ -17,25 +17,13 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "./matchers": {
-      "types": "./dist/matchers.d.ts",
-      "default": "./dist/matchers.js"
-    },
-    "./extend-expect": {
-      "types": "./dist/extend-expect.d.ts",
-      "default": "./dist/extend-expect.js"
     }
   },
   "files": [
     "CHANGELOG.md",
     "LICENSE",
     "README.md",
-    "dist",
-    "extend-expect.d.ts",
-    "extend-expect.js",
-    "matchers.d.ts",
-    "matchers.js"
+    "dist"
   ],
   "scripts": {
     "test": "vitest",

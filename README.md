@@ -30,43 +30,34 @@ This module should be installed as one of your project's `devDependencies`:
 
 ```shell
 # with npm
-npm install --save-dev vitest-axe
+npm install --save-dev @koralle/vitest-axe
 # yarn
-yarn add --dev vitest-axe
+yarn add --dev @koralle/vitest-axe
 # pnpm
-pnpm add -D vitest-axe
+pnpm add -D @koralle/vitest-axe
 ```
 
 ## Setup
 
-### Import `vitest-axe/extend-expect` module
-
-The simplest way to use this library is to import `vitest-axe/extend-expect`
-from your [test setup file][test setup file].
-
-```js
-// vitest-setup.js
-import "vitest-axe/extend-expect"
-```
-
 ### Extend in test setup file
 
-You can also import the matchers from `vitest-axe/matchers` then pass them to
+You can import the matcher from `@koralle/vitest-axe` then pass them to
 Vitest's `expect.extend` method yourself:
 
 ```js
 // vitest-setup.js
-import * as matchers from "vitest-axe/matchers"
+import { toHaveNoViolations } from "@koralle/vitest-axe"
 import { expect } from "vitest"
-expect.extend(matchers)
+
+expect.extend({ toHaveNoViolations })
 ```
 
 ### Extend in individual tests
 
 ```ts
-import { axe, toHaveNoViolations } from "vitest-axe"
+import { axe, toHaveNoViolations } from "@koralle/vitest-axe"
 
-expect.extend(toHaveNoViolations)
+expect.extend({ toHaveNoViolations })
 
 it("should have no axe violations", async () => {
   const html = "<html><!-- accessible markup! --></html>"
@@ -76,15 +67,11 @@ it("should have no axe violations", async () => {
 
 ### With TypeScript
 
-If you [imported the `vitest/extend-expect` module](#import-vitest-axeextend-expect-module)
-in your setup file, you should be good to go. Make sure your setup file is
-[included in your `tsconfig.json`](https://www.typescriptlang.org/tsconfig#include).
-
-If you do not import the `vitest/extend-expect` module, you will need to augment Vitest's `Assertion` and `AsymmetricMatchersContaining` interfaces.
+You will need to augment Vitest's `Assertion` and `AsymmetricMatchersContaining` interfaces.
 
 ```ts
 import "vitest"
-import type { AxeMatchers } from "vitest-axe/matchers"
+import type { AxeMatchers } from "@koralle/vitest-axe"
 
 declare module "vitest" {
   export interface Assertion extends AxeMatchers {}
@@ -100,7 +87,7 @@ Further reading:
 ## Usage
 
 ```ts
-import { axe } from "vitest-axe"
+import { axe } from "@koralle/vitest-axe"
 
 it("should demonstrate this matcher's usage", async () => {
   const render = () => '<img src="#"/>'
@@ -116,7 +103,7 @@ it("should demonstrate this matcher's usage", async () => {
 [version-badge]: https://img.shields.io/npm/v/vitest-axe.svg?style=flat-square
 [package]: https://www.npmjs.com/package/vitest-axe
 [license-badge]: https://img.shields.io/npm/l/vitest-axe.svg?style=flat-square
-[license]: https://github.com/chaance/vitest-axe/blob/main/LICENSE
-[github-watch-badge]: https://img.shields.io/github/watchers/chaance/vitest-axe.svg?style=social
-[github-watch]: https://github.com/chaance/vitest-axe/watchers
+[license]: https://github.com/koralle/vitest-axe/blob/main/LICENSE
+[github-watch-badge]: https://img.shields.io/github/watchers/koralle/vitest-axe.svg?style=social
+[github-watch]: https://github.com/koralle/vitest-axe/watchers
 <!-- prettier-ignore-end -->

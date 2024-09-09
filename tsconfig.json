@@ -1,10 +1,8 @@
 {
-  "include": ["**/*"],
+  "include": ["src/*.ts", "tests/*.ts", "tsup.config.ts", "eslint.config.mjs", "vitest.config.ts"],
   "exclude": [
     "dist",
     "node_modules",
-    "./matchers.d.ts",
-    "./extend-expect.d.ts"
   ],
   "compilerOptions": {
     "composite": false,
@@ -23,6 +21,7 @@
     "strict": true,
     "module": "esnext",
     "target": "esnext",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "allowJs": true
   }
 }
