@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/koralle/vitest-axe/compare/v0.1.1...v0.1.1) (2024-09-09)
+
+
+### Miscellaneous Chores
+
+* release 0.1.1 ([f407989](https://github.com/koralle/vitest-axe/commit/f4079898a8cb718f2fdcb7e18f55b590bd593606))
+
 ## 0.1.1 (2024-09-09)
 
 
