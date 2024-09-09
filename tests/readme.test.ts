@@ -117,7 +117,7 @@ describe("readme", () => {
         `
 
       const results = await configuredAxe(html)
-      expect(results.violations[0].id).toBe("demo-rule")
+      expect(results.violations[0]?.id).toBe("demo-rule")
     })
   })
 

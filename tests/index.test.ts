@@ -65,8 +65,8 @@ describe("axe", () => {
   test("returns violations for failing html example", async () => {
     const results = await axe(failingHtmlExample)
     const violation = results.violations[0]
-    expect(violation.id).toBe("link-name")
-    expect(violation.description).toBe("Ensure links have discernible text")
+    expect(violation?.id).toBe("link-name")
+    expect(violation?.description).toBe("Ensure links have discernible text")
   })
 
   test("can ignore allowed failures", async () => {
@@ -119,7 +119,7 @@ describe("axe", () => {
 
     results = await axe(failingHtmlExample)
     const violation = results.violations[0]
-    expect(violation.id).toBe("link-name")
-    expect(violation.description).toBe("Ensure links have discernible text")
+    expect(violation?.id).toBe("link-name")
+    expect(violation?.description).toBe("Ensure links have discernible text")
   })
 })
