@@ -19,6 +19,7 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         node-version-file: ${{ inputs.node-version-file }}
+        registry-url: "https://registry.npmjs.org"
 
     - name: Install pnpm
       uses: pnpm/action-setup@v4.0.0
