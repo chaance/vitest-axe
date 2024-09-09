@@ -1,6 +1,6 @@
 {
   "name": "@koralle/vitest-axe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom Vitest matcher for testing accessibility with aXe. Forked from jest-axe.",
   "repository": {
     "type": "git",
