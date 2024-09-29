@@ -38,33 +38,7 @@
     {
       "matchPackageNames": ["typescript", "@tsconfig/strictest", "@types/*"],
       "addLabels": ["dependencies/typescript"]
-    },
-    {
-      "matchPackageNames": [
-        "@eslint/compat",
-        "@eslint/js",
-        "@tsconfig/strictest",
-        "@types/eslint__js",
-        "@types/node",
-        "@vitest/eslint-plugin",
-        "axe-core",
-        "chalk",
-        "es-toolkit",
-        "eslint",
-        "eslint-import-resolver-node",
-        "eslint-import-resolver-typescript",
-        "eslint-plugin-import",
-        "globals",
-        "jsdom",
-        "lefthook",
-        "prettier",
-        "pretty-format",
-        "tsup",
-        "typescript",
-        "typescript-eslint",
-        "vitest"
-      ],
-      "rangeStrategy": "bump"
     }
-  ]
+  ],
+  "rangeStrategy": "bump"
 }
