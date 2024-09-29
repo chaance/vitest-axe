@@ -67,6 +67,9 @@
     "vitest": "1"
   },
   "engines": {
-    "node": ">=18.x"
+    "node": ">=20.x",
+    "pnpm": ">=9.x",
+    "npm": "please use pnpm!",
+    "yarn": "please use pnpm!"
   }
 }
