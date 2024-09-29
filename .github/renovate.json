@@ -1,14 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-      "config:base",
-      "group:allNonMajor",
-      ":separateMultipleMajorReleases",
-      "schedule:earlyMondays",
-      ":prConcurrentLimitNone",
-      ":prHourlyLimitNone",
-      "customManagers:githubActionsVersions"
-    ],
+    "config:base",
+    "group:allNonMajor",
+    ":separateMultipleMajorReleases",
+    "schedule:earlyMondays",
+    ":prConcurrentLimitNone",
+    ":prHourlyLimitNone",
+    "customManagers:githubActionsVersions"
+  ],
   "dependencyDashboard": false,
   "reviewers": ["koralle"],
   "assignees": ["koralle"],
@@ -32,19 +32,11 @@
       "addLabels": ["dependencies/linting"]
     },
     {
-      "matchPackageNames": [
-        "vitest",
-        "jsdom",
-        "@vitest/eslint-plugin"
-      ],
+      "matchPackageNames": ["vitest", "jsdom", "@vitest/eslint-plugin"],
       "addLabels": ["dependencies/testing"]
     },
     {
-      "matchPackageNames": [
-        "typescript",
-        "@tsconfig/strictest",
-        "@types/*"
-      ],
+      "matchPackageNames": ["typescript", "@tsconfig/strictest", "@types/*"],
       "addLabels": ["dependencies/typescript"]
     },
     {
