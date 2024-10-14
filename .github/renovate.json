@@ -6,8 +6,7 @@
     ":separateMultipleMajorReleases",
     "schedule:earlyMondays",
     ":prConcurrentLimitNone",
-    ":prHourlyLimitNone",
-    "customManagers:githubActionsVersions"
+    ":prHourlyLimitNone"
   ],
   "dependencyDashboard": false,
   "reviewers": ["koralle"],
