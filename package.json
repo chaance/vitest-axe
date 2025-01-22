@@ -44,8 +44,8 @@
 		"clean": "rm -rf dist && rm -rf node_modules"
 	},
 	"dependencies": {
-		"axe-core": "^4.7.2",
-		"chalk": "^5.3.0",
+		"axe-core": "^4.10.2",
+		"chalk": "^5.4.1",
 		"lodash-es": "^4.17.21"
 	},
 	"devDependencies": {
