@@ -9,7 +9,7 @@ import chalk from "chalk";
 import {
 	format as prettyFormat,
 	plugins as prettyFormatPlugins,
-} from "pretty-format";
+} from "@vitest/pretty-format";
 
 const {
 	AsymmetricMatcher,
