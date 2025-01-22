@@ -64,9 +64,11 @@ expect.extend(matchers);
 ### Extend in individual tests
 
 ```ts
-import { axe, toHaveNoViolations } from "vitest-axe";
+import { expect } from "vitest";
+import { axe } from "vitest-axe";
+import { toHaveNoViolations } from "vitest-axe/matchers";
 
-expect.extend(toHaveNoViolations);
+expect.extend({ toHaveNoViolations });
 
 it("should have no axe violations", async () => {
 	const html = "<html><!-- accessible markup! --></html>";
