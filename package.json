@@ -37,7 +37,7 @@
 		"matchers.js"
 	],
 	"scripts": {
-		"test": "vitest",
+		"test": "FORCE_COLOR=2 vitest",
 		"build": "tsup",
 		"lint": "eslint .",
 		"format": "prettier --write '**/*.{ts,js}'",
