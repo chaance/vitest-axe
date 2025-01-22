@@ -64,7 +64,7 @@
 		"vitest": "^3.0.3"
 	},
 	"peerDependencies": {
-		"vitest": ">=0.31.0"
+		"vitest": ">=2"
 	},
 	"packageManager": "pnpm@9.0.6"
 }
