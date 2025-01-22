@@ -94,7 +94,6 @@ describe("readme", () => {
 					description: "Demo check",
 					help: "Demo check",
 					helpUrl: "https://example.com",
-					tags: ["demo-rules"],
 				},
 			};
 
